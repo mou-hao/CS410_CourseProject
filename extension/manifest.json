@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Reddit Sentiment Analyzer",
+    "description": "Analyzes the sentiment of reddit comments",
+    "version": "1.0",
+    "content_scripts": [
+        {
+            "matches": ["https://www.reddit.com/r/*/comments/*"],
+            "js": ["scripts/bundle.js"]
+        },
+        {
+            "matches": ["https://www.reddit.com/r/*/comments/*"],
+            "js": ["scripts/content.js"]
+        }
+    ]
+}
