@@ -3,14 +3,24 @@
     "name": "Reddit Sentiment Analyzer",
     "description": "Analyzes the sentiment of reddit comments",
     "version": "1.0",
+    "permissions": [
+        "tabs",
+        "storage"
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
     "content_scripts": [
         {
             "matches": ["https://www.reddit.com/*"],
-            "js": ["scripts/bundle.js"]
+            "js": ["bundle.js"]
         },
         {
             "matches": ["https://www.reddit.com/*"],
-            "js": ["scripts/content.js"]
+            "js": ["content.js"]
         }
     ]
 }

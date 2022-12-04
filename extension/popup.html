@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th></th>
+            <th>Background</th>
+            <th>Foreground</th>
+        </tr>
+        <tr>
+            <td>Positive</td>
+            <td><input type="color" id="pBg" name="pBg"></td>
+            <td><input type="color" id="pFg" name="pFg"></td>
+        </tr>
+        <tr>
+            <td>Lean Positive</td>
+            <td><input type="color" id="lpBg" name="lpBg"></td>
+            <td><input type="color" id="lpFg" name="lpFg"></td>
+        </tr>
+        <tr>
+            <td>Neutral</td>
+            <td><input type="color" id="neuBg" name="neuBg"></td>
+            <td><input type="color" id="neuFg" name="neuFg"></td>
+        </tr>
+        <tr>
+            <td>Lean Negative</td>
+            <td><input type="color" id="lnBg" name="lnBg"></td>
+            <td><input type="color" id="lnFg" name="lnFg"></td>
+        </tr>
+        <tr>
+            <td>Negative</td>
+            <td><input type="color" id="nBg" name="nBg"></td>
+            <td><input type="color" id="nFg" name="nFg"></td>
+        </tr>
+    </table>
+    
+    <div style="padding-top:0.5rem;">
+        Extension on/off:
+        <input type="radio" id="on" name="onOff">
+        <label for="on">On</label>
+        <input type="radio" id="off" name="onOff">
+        <label for="off">Off</label>
+    </div>
+
+    <script src="./popup.js" type="module"></script>
+</body>
+
+</html>
