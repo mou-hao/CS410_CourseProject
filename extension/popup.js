@@ -12,55 +12,22 @@ const nFg = document.querySelector('#nFg');
 const onRadioButton = document.querySelector('#on');
 const offRadioButton = document.querySelector('#off');
 
-chrome.storage.local.get('init').then((result) => {
-    if (!result.init) {
-        chrome.storage.local.set({
-            pBg: '#2E8B57',
-            pFg: '#FFFFFF',
-            lpBg: '#90EE90',
-            lpFg: '#FFFFFF',
-            neuBg: '#F0E68C',
-            neuFg: '#FFFFFF',
-            lnBg: '#FFA07A',
-            lnFg: '#FFFFFF',
-            nBg: '#CD5C5C',
-            nFg: '#FFFFFF',
-            on: true,
-            init: true
-        });
+chrome.storage.local.get([
+    'pBg', 'pFg', 'lpBg', 'lpFg', 'neuBg', 'neuFg', 'lnBg', 'lnFg', 'nBg', 'nFg', 'on'
+]).then((result) => {
+    pBg.value = result.pBg;
+    pFg.value = result.pFg;
+    lpBg.value = result.lpBg;
+    lpFg.value = result.lpFg;
+    neuBg.value = result.neuBg;
+    neuFg.value = result.neuFg;
+    lnBg.value = result.lnBg;
+    lnFg.value = result.lnFg;
+    nBg.value = result.nBg;
+    nFg.value = result.nFg;
 
-        pBg.value = '#2E8B57';
-        pFg.value = '#FFFFFF';
-        lpBg.value = '#90EE90';
-        lpFg.value = '#FFFFFF';
-        neuBg.value = '#F0E68C';
-        neuFg.value = '#FFFFFF';
-        lnBg.value = '#FFA07A';
-        lnFg.value = '#FFFFFF';
-        nBg.value = '#CD5C5C';
-        nFg.value = '#FFFFFF';
-    
-        onRadioButton.checked = true;
-        offRadioButton.checked = false;
-    } else {
-        chrome.storage.local.get([
-            'pBg', 'pFg', 'lpBg', 'lpFg', 'neuBg', 'neuFg', 'lnBg', 'lnFg', 'nBg', 'nFg', 'on'
-        ]).then((result) => {
-            pBg.value = result.pBg;
-            pFg.value = result.pFg;
-            lpBg.value = result.lpBg;
-            lpFg.value = result.lpFg;
-            neuBg.value = result.neuBg;
-            neuFg.value = result.neuFg;
-            lnBg.value = result.lnBg;
-            lnFg.value = result.lnFg;
-            nBg.value = result.nBg;
-            nFg.value = result.nFg;
-        
-            onRadioButton.checked = result.on;
-            offRadioButton.checked = !result.on;
-        });
-    }
+    onRadioButton.checked = result.on;
+    offRadioButton.checked = !result.on;
 });
 
 pBg.addEventListener('input', (event) => {

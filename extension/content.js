@@ -11,48 +11,18 @@ let colors = {
     nFg: ''
 }
 
-chrome.storage.local.get('init').then((result) => {
-    if (!result.init) {
-        chrome.storage.local.set({
-            pBg: '#2E8B57',
-            pFg: '#FFFFFF',
-            lpBg: '#90EE90',
-            lpFg: '#FFFFFF',
-            neuBg: '#F0E68C',
-            neuFg: '#FFFFFF',
-            lnBg: '#FFA07A',
-            lnFg: '#FFFFFF',
-            nBg: '#CD5C5C',
-            nFg: '#FFFFFF',
-            on: true,
-            init: true
-        });
+chrome.storage.local.get([
+    'pBg', 'pFg', 'lpBg', 'lpFg', 'neuBg', 'neuFg', 'lnBg', 'lnFg', 'nBg', 'nFg'
+]).then((result) => {
+    colors = result;
+});
 
-        colors.pBg = '#2E8B57';
-        colors.pFg = '#FFFFFF';
-        colors.lpBg = '#90EE90';
-        colors.lpFg = '#FFFFFF';
-        colors.neuBg = '#F0E68C';
-        colors.neuFg = '#FFFFFF';
-        colors.lnBg = '#FFA07A';
-        colors.lnFg = '#FFFFFF';
-        colors.nBg = '#CD5C5C';
-        colors.nFg = '#FFFFFF';
-    } else {
-        chrome.storage.local.get([
-            'pBg', 'pFg', 'lpBg', 'lpFg', 'neuBg', 'neuFg', 'lnBg', 'lnFg', 'nBg', 'nFg'
-        ]).then((result) => {
-            colors = result;
-        });
-    }
-
-    chrome.storage.onChanged.addListener((changes, namespace) => {
-        for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
-            if (key.endsWith('Fg') || key.endsWith('Bg')) {
-                colors[key] = newValue;
-            }
+chrome.storage.onChanged.addListener((changes, namespace) => {
+    for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
+        if (key.endsWith('Fg') || key.endsWith('Bg')) {
+            colors[key] = newValue;
         }
-    });
+    }
 });
 
 function genScoreHTML(score) {
